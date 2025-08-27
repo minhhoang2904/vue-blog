@@ -62,9 +62,9 @@
             </button>
             <button 
               @click="createPost"
-              class="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full hover:from-blue-600 hover:to-purple-700 hover:scale-105 transition-all duration-200 font-semibold shadow-md"
+              class="px-6 py-2 bg-black text-white rounded-full hover:from-blue-600 hover:to-purple-700 hover:scale-105 transition-all duration-200 font-semibold shadow-md"
             >
-              Publish
+              Post
             </button>
           </div>
         </div>
