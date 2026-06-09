@@ -1,0 +1,308 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "google-vertex-anthropic": {
+      "options": {
+        "project": "rbprj-100369",
+        "location": "us-east5"
+      }
+    },
+    "vertex-anthropic-eu": {
+      "npm": "@ai-sdk/google-vertex/anthropic",
+      "options": {
+        "project": "rbprj-100369",
+        "location": "europe-west1"
+      },
+      "models": {
+        "claude-haiku-4-5@20251001": {
+          "id": "claude-haiku-4-5@20251001",
+          "name": "Claude Haiku 4.5 (europe-west1)",
+          "cost": {
+            "input": 1,
+            "output": 5,
+            "cache_read": 0.1,
+            "cache_write": 1.25
+          }
+        }
+      }
+    },
+    "ollama": {
+      "options": {
+        "baseURL": "http://localhost:11434/v1",
+        "apiKey": "ollama"
+      }
+    }
+  },
+  "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+  "small_model": "vertex-anthropic-eu/claude-haiku-4-5@20251001",
+  "default_agent": "build",
+  "agent": {
+    "build": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.7,
+      "description": "Main coding with Claude Sonnet 4.6 via Vertex AI",
+      "mode": "primary"
+    },
+    "plan": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.3,
+      "description": "Planning with Claude Sonnet 4.6 via Vertex AI"
+    },
+    "general": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "description": "General tasks with Claude Haiku 4.5 - fast and lightweight"
+    },
+    "explore": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.2,
+      "description": "Codebase exploration with Claude Haiku 4.5 - fast search"
+    },
+    "title": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "description": "Title generation with Claude Haiku 4.5 - fast and cheap"
+    },
+    "compaction": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.3,
+      "description": "Context compression with Claude Haiku 4.5 - fast compaction"
+    },
+    "summary": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.4,
+      "description": "Session summary with Claude Sonnet 4.6 via Vertex AI"
+    },
+    "planner": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    },
+    "business-analysis": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    },
+    "security-audit": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    },
+    "be-fix-bug": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    },
+    "devops": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    },
+    "fe-fix-bug": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    },
+    "be-code-review": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    },
+    "e2e-test": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    },
+    "be-develop": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    },
+    "fe-code-review": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    },
+    "security-fix": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    },
+    "fe-develop": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    },
+    "test-fix": {
+      "model": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "temperature": 0.5,
+      "mode": "subagent"
+    }
+  },
+  "skillIntelligence": {
+    "enabled": true,
+    "maxSuggested": 1,
+    "retrieval": {
+      "mode": "bm25-only",
+      "minInsightScore": 0,
+      "minEpisodicScore": 0,
+      "embeddingModel": "text-embedding-005",
+      "fallback": "bm25-only"
+    },
+    "hotPath": {
+      "minMatchScore": 0.3,
+      "minScoreGapRatio": 0
+    },
+    "warmPath": {
+      "gateCheckInterval": 10,
+      "maxConstraintsPerRun": 5,
+      "analysisModel": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "maxTraceArgLength": 500,
+      "maxTraceResultLength": 1000,
+      "enableLlmAnalysis": false,
+      "enableTraceRecording": true,
+      "slidingWindowSize": 10
+    },
+    "coldPath": {
+      "minDigestsForNewSkill": 5,
+      "minDigestsForUpdate": 5,
+      "minDigestsForPattern": 3,
+      "minEffectivenessRate": 0.5,
+      "maxFallbackRate": 0.4,
+      "minToolSuccessRate": 0.6,
+      "minToolCalls": 20,
+      "minTotalDigests": 10,
+      "slidingWindowDays": 30,
+      "maxSelfCorrectionGenerations": 3,
+      "criticModel": "google-vertex-anthropic/claude-sonnet-4-6@default",
+      "minCriticConfidence": 0.7,
+      "modelSplit": {
+        "creation": "google-vertex-anthropic/claude-sonnet-4-6@default",
+        "usage": "google-vertex-anthropic/claude-sonnet-4-6@default"
+      },
+      "searchSources": [],
+      "pruneAfterDays": 30,
+      "verificationRunCount": 8,
+      "verificationEarlyPassCount": 5,
+      "verificationTokenRegressionThreshold": 0.2,
+      "verificationQualityRegressionThreshold": 0.15,
+      "minToolCallsForDegradation": 20
+    },
+    "enableLlmAnalysis": false,
+    "enableTraceRecording": true,
+    "traceRetentionDays": 7,
+    "metricMonitorInterval": 50,
+    "profilesDir": ".opencode/profiles",
+    "unitsDir": ".opencode/units",
+    "skillMarkets": [
+      {
+        "type": "offline-hub"
+      }
+    ]
+  },
+  "server": {
+    "port": 9777,
+    "hostname": "localhost",
+    "mdns": false,
+    "mdnsDomain": "opencode.local",
+    "cors": []
+  },
+  "sandbox": {
+    "mode": "docker",
+    "scope": "project",
+    "workspace": "rw",
+    "image": "opencode/sandbox:latest",
+    "prefix": "opencode-sb",
+    "readOnlyRoot": false,
+    "network": "bridge",
+    "user": "root",
+    "memory": "2g",
+    "cpus": "2.0",
+    "pidsLimit": 500,
+    "persist": true,
+    "workdir": "/workspace",
+    "ssh": {
+      "host": "",
+      "port": 22,
+      "username": "",
+      "auth": {
+        "type": "agent"
+      },
+      "workdir": "/tmp/opencode-workspace",
+      "keepAliveInterval": 30000,
+      "timeout": 120000
+    }
+  },
+  "orchestration": {
+    "stepLimits": {
+      "emergencyCap": 150,
+      "defaultPhaseSteps": 25,
+      "readOnlyMultiplier": 1,
+      "docReviewMultiplier": 1.5,
+      "implementSoftMultiplier": 1.5,
+      "analyzeSoftMultiplier": 1.5,
+      "reviewSoftMultiplier": 2,
+      "reviewHardMultiplier": 3,
+      "reviewHardMinimum": 15
+    },
+    "llm": {
+      "planningMaxTokens": 4000,
+      "featurePlanningMaxTokens": 2000,
+      "aggregationMaxTokens": 2000,
+      "planningTimeoutMs": 60000,
+      "featurePlanningTimeoutMs": 60000,
+      "aggregationTimeoutMs": 60000
+    },
+    "truncation": {
+      "planningTaskChars": 3000,
+      "featurePlanningTaskChars": 3000,
+      "phaseContextTask": {
+        "implement": 4000,
+        "verifyFix": 500,
+        "other": 2000
+      },
+      "phaseSummary": {
+        "readOnly": 5000,
+        "other": 3000
+      },
+      "priorResults": {
+        "fixVerify": 500,
+        "consuming": 4000,
+        "tester": 5000,
+        "frontend": 4000,
+        "default": 3000
+      }
+    },
+    "runtimeImages": {
+      "python": "python:3.12-slim",
+      "node": "node:20-slim",
+      "go": "golang:1.22-bookworm",
+      "rust": "rust:1.77-slim",
+      "java": "eclipse-temurin:21-jdk",
+      "dotnet": "mcr.microsoft.com/dotnet/sdk:8.0"
+    }
+  },
+  "webhook": {
+    "enabled": false,
+    "token": "",
+    "maxBodyBytes": 1048576,
+    "mappings": {}
+  },
+  "channels": {},
+  "cron": {
+    "enabled": false
+  },
+  "pluginCatalog": {
+    "enabled": true,
+    "autoInstall": "suggest",
+    "sources": [],
+    "refreshIntervalHours": 24,
+    "trustedPublishers": [],
+    "maxAutoInstallPerSession": 3
+  },
+  "toolPolicy": {
+    "allow": [],
+    "deny": [],
+    "ask": []
+  }
+}
